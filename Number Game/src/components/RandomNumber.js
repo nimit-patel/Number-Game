@@ -4,7 +4,6 @@ import { Text, TouchableOpacity, StyleSheet } from 'react-native'
 
 class RandomNumber extends React.Component{
 
-
     static propTypes = {
         id: PropTypes.number.isRequired,
         number: PropTypes.number.isRequired,
@@ -12,8 +11,9 @@ class RandomNumber extends React.Component{
         onPress: PropTypes.func.isRequired,
     };
 
-    handleNumberClick= (index) =>{
-        this.props.onPress(this.props.id);
+    handleNumberClick= () =>{
+        if(!this.props.isDisabled)
+            this.props.onPress(this.props.id);
     };
 
     render(){
@@ -30,9 +30,10 @@ class RandomNumber extends React.Component{
 const styles = StyleSheet.create({
     number: {
         fontSize: 35,
-        borderRadius: 7,
+        borderRadius: 50,
         width: 120,
-        margin: 40,
+        marginHorizontal: 35,
+        marginVertical: 20,
         backgroundColor: '#669933',
         color: 'white',
         textAlign: 'center',
